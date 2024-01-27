@@ -1,0 +1,30 @@
+services:
+  user-service:
+    build: 
+      context: ./userservice
+      dockerfile: ./Dockerfile
+    ports:
+     - "3000:3000"
+    volumes: 
+      - ./userservice:/app
+  order-service:
+    build:
+      context: ./order-service
+      dockerfile: ./Dockerfile
+    ports:
+      - "4000:4000"
+    volumes: 
+      - ./order-service:/app
+  gateway-service:
+    build:
+      context: ./api-gateway
+      dockerfile: ./Dockerfile
+    ports:
+      - "5000:5000"
+    volumes: 
+      - ./api-gateway:/app
+
+  # test:
+  #   build:
+  #     context: ./
+  #     dockerfile: ./testservice/Dockerfile
